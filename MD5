@@ -1,0 +1,17 @@
+1d55d7146eb3a862e275183ccfbc78c7 *DESCRIPTION
+570c2a6d87f050e3cef0b791a79c139a *NAMESPACE
+bda9664ae0a3ea5360d7c6f33de1f0de *NEWS.md
+470d723a3c2c3a06b882f3f918a905a9 *R/fit_exponential.R
+d4f99760f02b7c8b1309cc67da97f2e0 *R/slope_ratio.R
+956d536d460b0fdcc8b0ff66114534b3 *R/spectra.R
+96ba65b4254b633e59af99e6997dcc4b *R/spectral_curve.R
+9cb76fa94c3e31389c54b7a5f9606ff3 *README.md
+1971013723e9c5c5a5da960fd813a2c9 *data/spectra.RData
+421742724daa428b46a7f53ade99771e *inst/CITATION
+c45b453c38b9479ca46e0c49e2b17d80 *inst/images/README-data-1.png
+faee311d5563b6a3b4b58a9214599c3c *inst/images/README-exponential-1.png
+70c51e412a9e10ff6f8315cb37635386 *inst/images/README-spectral_curve-1.png
+d3ccd4b94a97d0c643b5f92be6525be1 *man/cdom_fit_exponential.Rd
+e6d08cd37565118c84f9996d1e00ab21 *man/cdom_slope_ratio.Rd
+9e94e5cf6231ad3e6f4a1fb23153c594 *man/cdom_spectral_curve.Rd
+83781b491011143ea4fa2db0699a5486 *man/spectra.Rd
