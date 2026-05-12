@@ -12,9 +12,9 @@
 #'
 #'   \deqn{SR = \frac{S_{275-295}}{S_{350-400}}}
 #'
-#' @references \url{http://www.aslo.org/lo/toc/vol_53/issue_3/0955.html}
+#' @references \doi{10.4319/lo.2008.53.3.0955}
 #'
-#' @inheritParams cdom_fit_exponential
+#' @inheritParams cdom_exponential
 #'
 #' @return The value of the slope ratio.
 #' @export
@@ -25,12 +25,13 @@
 #'
 
 cdom_slope_ratio <- function(wl, absorbance) {
-
-  stopifnot(length(wl) == length(absorbance),
-            is.numeric(absorbance),
-            is.numeric(wl),
-            is.vector(wl),
-            is.vector(absorbance))
+  stopifnot(
+    length(wl) == length(absorbance),
+    is.numeric(absorbance),
+    is.numeric(wl),
+    is.vector(wl),
+    is.vector(absorbance)
+  )
   #--------------------------------------------
   # Get data
   #--------------------------------------------

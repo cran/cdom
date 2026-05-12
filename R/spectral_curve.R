@@ -12,7 +12,7 @@
 #'@description Calculate the spectral curve of CDOM spectra has proposed by
 #'  Loiselle et al. 2009.
 #'
-#'@inheritParams cdom_fit_exponential
+#'@inheritParams cdom_exponential
 #'
 #'@param interval The interval used to claculate each slope (default = 21 nm).
 #'
@@ -20,7 +20,7 @@
 #'  The default value is 0.8 meaning that the determination coefficient of the
 #'  regression between log-transformed data and wavelength should be >= 0.8.
 #'
-#'@references \url{http://doi.wiley.com/10.4319/lo.2009.54.2.0590}
+#'@references \doi{10.4319/lo.2009.54.2.0590}
 #'
 #'@return A dataframe containing the centered wavelength, the calculated slope
 #'  and the determination coefficient of the linear regression used to claculate
@@ -32,15 +32,21 @@
 #'res <- cdom_spectral_curve(spectra$wavelength, spectra$spc2)
 #'plot(res$wl, res$s, type = "l")
 
-cdom_spectral_curve <- function(wl, absorbance, interval = 21, r2threshold = 0.8) {
-
-  stopifnot(length(wl) == length(absorbance),
-            is.numeric(absorbance),
-            is.numeric(wl),
-            is.vector(wl),
-            is.vector(absorbance),
-            is.numeric(interval),
-            is.numeric(r2threshold))
+cdom_spectral_curve <- function(
+  wl,
+  absorbance,
+  interval = 21,
+  r2threshold = 0.8
+) {
+  stopifnot(
+    length(wl) == length(absorbance),
+    is.numeric(absorbance),
+    is.numeric(wl),
+    is.vector(wl),
+    is.vector(absorbance),
+    is.numeric(interval),
+    is.numeric(r2threshold)
+  )
 
   #--------------------------------------------
   # Resample data by 1 nm increment.
@@ -51,7 +57,7 @@ cdom_spectral_curve <- function(wl, absorbance, interval = 21, r2threshold = 0.8
   yy <- sf(xx)
 
   ## Adjust the offset of the spectral (we do not want negative values).
-  if(min(yy) < 0){
+  if (min(yy) < 0) {
     yy <- yy - min(yy)
   }
 
@@ -65,8 +71,7 @@ cdom_spectral_curve <- function(wl, absorbance, interval = 21, r2threshold = 0.8
   yy_log <- log(yy)
   yy_log[yy_log == -Inf] <- NA
 
-  for(i in min(xx):(max(xx) - interval)){
-
+  for (i in min(xx):(max(xx) - interval)) {
     index <- xx >= i & xx <= (i + interval)
 
     fit <- lm(yy_log[index] ~ xx[index])
@@ -83,5 +88,4 @@ cdom_spectral_curve <- function(wl, absorbance, interval = 21, r2threshold = 0.8
   res <- na.omit(res)
 
   return(res)
-
 }
